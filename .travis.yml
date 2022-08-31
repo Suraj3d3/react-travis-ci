@@ -1,0 +1,23 @@
+sudo: required
+services:
+  - docker
+
+before-install:
+  - docker build -t react-travis-dev -f Dockerfile.dev .
+
+# after running npm run test , we need to manually exit from CLI. To automatically exit from
+# CLI after test is done, use "-e CI=true"
+script: -docker run -e CI=true react-travis-dev npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: $ACCESS_KEY_ID
+  secret_access_key:
+    secure: "$SECRET_ACCESS_KEY"
+  region: "us-east-1"
+  app: "react-travis-ci"
+  env: "Reacttravisci-env"
+  bucket_name: "elasticbeanstalk-us-east-1-182701560178"
+  bucket_path: "react-travis-ci"
+  on:
+    branch: main
