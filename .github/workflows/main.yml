@@ -44,4 +44,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/myreact:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/myreact:latest
