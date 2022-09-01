@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React test statement
+          Testing github action CI/CD workflow
         </a>
       </header>
     </div>
